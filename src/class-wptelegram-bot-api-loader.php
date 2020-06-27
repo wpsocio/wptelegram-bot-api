@@ -6,7 +6,6 @@
  * @since      1.0.0
  *
  * @package    WPTelegram_Bot_API
- * @subpackage WPTelegram_Bot_API/includes
  */
 
 // If this file is called directly, abort.
