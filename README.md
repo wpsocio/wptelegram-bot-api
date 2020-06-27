@@ -28,3 +28,8 @@ $bot_api->sendPhoto
 - It's safe to include it directly.
 - Library takes care of its multiple versions being loaded.
 - It always loads the latest version.
+
+## Requirements
+
+- PHP >= 5.6
+- WP >= 4.7
