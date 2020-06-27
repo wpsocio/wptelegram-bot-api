@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die;
 }
 
-if ( ! class_exists( 'WPTelegram_Bot_API_Loader_121', false ) ) {
+if ( ! class_exists( 'WPTelegram_Bot_API_Loader_122', false ) ) {
 	/**
 	 * Handles checking for and loading the newest version of WPTelegram_Bot_API
 	 *
@@ -31,7 +31,7 @@ if ( ! class_exists( 'WPTelegram_Bot_API_Loader_121', false ) ) {
 	 * @license   GPL-2.0+
 	 * @link      https://t.me/WPTelegram
 	 */
-	class WPTelegram_Bot_API_Loader_121 {
+	class WPTelegram_Bot_API_Loader_122 {
 
 		/**
 		 * Current version number
@@ -39,7 +39,7 @@ if ( ! class_exists( 'WPTelegram_Bot_API_Loader_121', false ) ) {
 		 * @var   string
 		 * @since 1.0.1
 		 */
-		const VERSION = '1.2.1';
+		const VERSION = '1.2.2';
 
 		/**
 		 * Current version hook priority.
@@ -48,20 +48,20 @@ if ( ! class_exists( 'WPTelegram_Bot_API_Loader_121', false ) ) {
 		 * @var   int
 		 * @since 1.0.1
 		 */
-		const PRIORITY = 9987;
+		const PRIORITY = 9986;
 
 		/**
-		 * Single instance of the WPTelegram_Bot_API_Loader_121 object
+		 * Single instance of the WPTelegram_Bot_API_Loader_122 object
 		 *
-		 * @var WPTelegram_Bot_API_Loader_121
+		 * @var WPTelegram_Bot_API_Loader_122
 		 */
 		public static $single_instance = null;
 
 		/**
-		 * Creates/returns the single instance WPTelegram_Bot_API_Loader_121 object
+		 * Creates/returns the single instance WPTelegram_Bot_API_Loader_122 object
 		 *
 		 * @since  1.0.1
-		 * @return WPTelegram_Bot_API_Loader_121 Single instance object
+		 * @return WPTelegram_Bot_API_Loader_122 Single instance object
 		 */
 		public static function initiate() {
 			if ( null === self::$single_instance ) {
@@ -135,5 +135,5 @@ if ( ! class_exists( 'WPTelegram_Bot_API_Loader_121', false ) ) {
 			include_once "{$path}/class-{$class_name}.php";
 		}
 	}
-	WPTelegram_Bot_API_Loader_121::initiate();
+	WPTelegram_Bot_API_Loader_122::initiate();
 }
