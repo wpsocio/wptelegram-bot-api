@@ -1,11 +1,30 @@
-<?php
-
+<?php // phpcs:ignore -- class name hyphens
 /**
- * Class WPTelegram_Bot_API_Request.
+ * Request class.
+ *
+ * @link       https://t.me/manzoorwanijk
+ * @since      1.0.0
+ *
+ * @package    WPTelegram_Bot_API
+ * @subpackage WPTelegram_Bot_API/classes
  */
+
 if ( ! class_exists( 'WPTelegram_Bot_API_Request' ) ) :
+	/**
+	 * Request class.
+	 *
+	 * @since  1.0.1
+	 *
+	 * @category  WordPress_Plugin Addon
+	 * @package   WPTelegram_Bot_API
+	 * @author    WPTelegram team
+	 * @license   GPL-2.0+
+	 * @link      https://t.me/WPTelegram
+	 */
 	class WPTelegram_Bot_API_Request {
 		/**
+		 * The API token.
+		 *
 		 * @since  1.0.0
 		 *
 		 * @var string|null The bot access token to use for this request.
@@ -13,6 +32,8 @@ if ( ! class_exists( 'WPTelegram_Bot_API_Request' ) ) :
 		protected $bot_token;
 
 		/**
+		 * The API method name.
+		 *
 		 * @since  1.0.5
 		 *
 		 * @var string The API api_method for this request.
@@ -20,6 +41,8 @@ if ( ! class_exists( 'WPTelegram_Bot_API_Request' ) ) :
 		protected $api_method;
 
 		/**
+		 * The method params.
+		 *
 		 * @since  1.0.0
 		 *
 		 * @var array The parameters to send with this request.
@@ -29,9 +52,9 @@ if ( ! class_exists( 'WPTelegram_Bot_API_Request' ) ) :
 		/**
 		 * Creates a new WPTelegram_Bot_API_Request
 		 *
-		 * @param string|null $bot_token
-		 * @param string|null $api_method
-		 * @param array|null  $params
+		 * @param string|null $bot_token The API token.
+		 * @param string|null $api_method The API method name.
+		 * @param array|null  $params The method params.
 		 */
 		public function __construct( $bot_token = null, $api_method = null, array $params = array() ) {
 			$this->set_bot_token( $bot_token );
@@ -44,7 +67,7 @@ if ( ! class_exists( 'WPTelegram_Bot_API_Request' ) ) :
 		 *
 		 * @since  1.0.0
 		 *
-		 * @param string
+		 * @param string $bot_token The API token.
 		 *
 		 * @return WPTelegram_Bot_API_Request
 		 */
@@ -70,7 +93,7 @@ if ( ! class_exists( 'WPTelegram_Bot_API_Request' ) ) :
 		 *
 		 * @since  1.0.5
 		 *
-		 * @param string $api_method
+		 * @param string $api_method The API method name.
 		 *
 		 * @return WPTelegram_Bot_API_Request
 		 */
@@ -95,7 +118,7 @@ if ( ! class_exists( 'WPTelegram_Bot_API_Request' ) ) :
 		 *
 		 * @since  1.0.0
 		 *
-		 * @param array $params
+		 * @param array $params The method params.
 		 *
 		 * @return WPTelegram_Bot_API_Request
 		 */

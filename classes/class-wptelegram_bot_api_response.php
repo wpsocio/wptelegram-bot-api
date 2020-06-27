@@ -1,69 +1,105 @@
-<?php
-
+<?php // phpcs:ignore -- class name hyphens
 /**
- * Class WPTelegram_Bot_API_Response.
+ * Response class.
+ *
+ * @link       https://t.me/manzoorwanijk
+ * @since      1.0.0
+ *
+ * @package    WPTelegram_Bot_API
+ * @subpackage WPTelegram_Bot_API/classes
  */
+
 if ( ! class_exists( 'WPTelegram_Bot_API_Response' ) ) :
+	/**
+	 * Response class.
+	 *
+	 * @since  1.0.1
+	 *
+	 * @category  WordPress_Plugin Addon
+	 * @package   WPTelegram_Bot_API
+	 * @author    WPTelegram team
+	 * @license   GPL-2.0+
+	 * @link      https://t.me/WPTelegram
+	 */
 	class WPTelegram_Bot_API_Response {
 		/**
+		 * Whether the response is valid JSON.
+		 *
 		 * @since  1.0.0
 		 *
-		 * @var bool If the response is valid JSON
+		 * @var bool
 		 */
 		protected $valid_json;
 
 		/**
+		 * The HTTP response code from API.
+		 *
 		 * @since  1.0.0
 		 *
-		 * @var null|int The HTTP response code from API.
+		 * @var null|int
 		 */
 		protected $response_code;
+
 		/**
+		 * The HTTP response message from API.
+		 *
 		 * @since  1.0.0
 		 *
-		 * @var null|int The HTTP response message from API.
+		 * @var null|int
 		 */
 		protected $response_message;
 
 		/**
+		 * The headers returned from API request.
+		 *
 		 * @since  1.0.0
 		 *
-		 * @var array The headers returned from API request.
+		 * @var array
 		 */
 		protected $headers = null;
 
 		/**
+		 * The raw body of the response from API request.
+		 *
 		 * @since  1.0.0
 		 *
-		 * @var string The raw body of the response from API request.
+		 * @var string
 		 */
 		protected $body = null;
 
 		/**
+		 * The decoded body of the API response.
+		 *
 		 * @since  1.0.0
 		 *
-		 * @var array The decoded body of the API response.
+		 * @var array
 		 */
 		protected $decoded_body = array();
 
 		/**
+		 * API Endpoint used to make the request.
+		 *
 		 * @since  1.0.0
 		 *
-		 * @var string API Endpoint used to make the request.
+		 * @var string
 		 */
 		protected $api_method;
 
 		/**
+		 * The original request that returned this response.
+		 *
 		 * @since  1.0.0
 		 *
-		 * @var WPTelegram_Bot_API_Request The original request that returned this response.
+		 * @var WPTelegram_Bot_API_Request
 		 */
 		protected $request;
 
 		/**
+		 * The original response from wp_remote_post.
+		 *
 		 * @since   1.0.0
 		 *
-		 * @var array   The original response from wp_remote_post
+		 * @var array
 		 */
 		protected $raw_response;
 
@@ -72,8 +108,8 @@ if ( ! class_exists( 'WPTelegram_Bot_API_Response' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @param WPTelegram_Bot_API_Request $request
-		 * @param array                      $raw_response
+		 * @param WPTelegram_Bot_API_Request $request The original request that returned this response.
+		 * @param array                      $raw_response The original response from wp_remote_post.
 		 */
 		public function __construct( $request, $raw_response ) {
 
@@ -90,6 +126,9 @@ if ( ! class_exists( 'WPTelegram_Bot_API_Response' ) ) :
 		 * Sets the class properties
 		 *
 		 * @since   1.0.0
+		 *
+		 * @param array $raw_response The original response from wp_remote_post.
+		 * @return void
 		 */
 		public function set_properties( $raw_response ) {
 			$properties = array(
@@ -231,9 +270,9 @@ if ( ! class_exists( 'WPTelegram_Bot_API_Response' ) ) :
 		 */
 		public function decode_body() {
 			$this->decoded_body = json_decode( $this->body, true );
-			// check for PHP < 5.3
+			// check for PHP < 5.3.
 			if ( function_exists( 'json_last_error' ) && defined( 'JSON_ERROR_NONE' ) ) {
-				return ( json_last_error() == JSON_ERROR_NONE );
+				return ( json_last_error() === JSON_ERROR_NONE );
 			}
 			return true;
 		}

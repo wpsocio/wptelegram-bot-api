@@ -1,14 +1,32 @@
-<?php
-
+<?php // phpcs:ignore -- class name hyphens
 /**
- * Class WPTelegram_Bot_API_Client.
+ * Client class.
+ *
+ * @link       https://t.me/manzoorwanijk
+ * @since      1.0.0
+ *
+ * @package    WPTelegram_Bot_API
+ * @subpackage WPTelegram_Bot_API/classes
  */
+
 if ( ! class_exists( 'WPTelegram_Bot_API_Client' ) ) :
+	/**
+	 * Client class.
+	 *
+	 * @since  1.0.1
+	 *
+	 * @category  WordPress_Plugin Addon
+	 * @package   WPTelegram_Bot_API
+	 * @author    WPTelegram team
+	 * @license   GPL-2.0+
+	 * @link      https://t.me/WPTelegram
+	 */
 	class WPTelegram_Bot_API_Client {
 		/**
-		 * @const string Telegram Bot API URL.
+		 * The API base URL.
 		 *
-		 * @since  1.0.0
+		 * @since 1.0.0
+		 * @var string Telegram Bot API URL.
 		 */
 		const BASE_URL = 'https://api.telegram.org/bot';
 
@@ -28,7 +46,7 @@ if ( ! class_exists( 'WPTelegram_Bot_API_Client' ) ) :
 		 *
 		 * @since  1.0.0
 		 *
-		 * @param WPTelegram_Bot_API_Request $request
+		 * @param WPTelegram_Bot_API_Request $request The request instance.
 		 *
 		 * @return array
 		 */
@@ -50,11 +68,12 @@ if ( ! class_exists( 'WPTelegram_Bot_API_Client' ) ) :
 		 *
 		 * @return WP_Error|WPTelegram_Bot_API_Response
 		 */
+		// phpcs:ignore -- snake case
 		public function sendRequest( $request ) {
 			list( $url, $params ) = $this->prepare_request( $request );
 
 			$args = array(
-				'timeout'   => 20, // seconds
+				'timeout'   => 20, // seconds.
 				'blocking'  => true,
 				'headers'   => array( 'wptelegram_bot' => true ),
 				'body'      => $params,
@@ -69,7 +88,7 @@ if ( ! class_exists( 'WPTelegram_Bot_API_Client' ) ) :
 
 			$args = apply_filters( 'wptelegram_bot_api_remote_post_args', $args, $request );
 
-			// send the request
+			// send the request.
 			$raw_response = wp_remote_post( $url, $args );
 
 			if ( ! is_wp_error( $raw_response ) ) {
@@ -84,8 +103,8 @@ if ( ! class_exists( 'WPTelegram_Bot_API_Client' ) ) :
 		 *
 		 * @since  1.0.0
 		 *
-		 * @param WPTelegram_Bot_API_Request $request
-		 * @param array                      $raw_response
+		 * @param WPTelegram_Bot_API_Request $request The request instance.
+		 * @param array                      $raw_response The response.
 		 *
 		 * @return WPTelegram_Bot_API_Response
 		 */

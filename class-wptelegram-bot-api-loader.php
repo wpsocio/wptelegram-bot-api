@@ -1,11 +1,11 @@
-<?php
+<?php // phpcs:ignore -- class name hyphens
 /**
  * The loader class for the API.
  *
  * @link       https://t.me/manzoorwanijk
  * @since      1.0.0
  *
- * @package    WPTelegram_Bot_APIo
+ * @package    WPTelegram_Bot_API
  * @subpackage WPTelegram_Bot_API/includes
  */
 
