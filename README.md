@@ -5,7 +5,7 @@ Telegram Bot API library for WordPress.
 ## Usage
 
 ```php
-require __DIR__ . '/wptelegram-bot-api/class-wptelegram-bot-api-loader.php'
+require __DIR__ . '/wptelegram-bot-api/src/index.php'
 
 $bot_token  = 'YOUR BOT TOKEN HERE';
 
