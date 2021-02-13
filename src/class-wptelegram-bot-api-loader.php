@@ -1,19 +1,11 @@
-<?php // phpcs:ignore -- class name hyphens
-/**
- * The loader class for the API.
- *
- * @link       https://t.me/manzoorwanijk
- * @since      1.0.0
- *
- * @package    WPTelegram_Bot_API
- */
+<?php
 
 // If this file is called directly, abort.
 if ( ! defined( 'ABSPATH' ) ) {
 	die;
 }
 
-if ( ! class_exists( 'WPTelegram_Bot_API_Loader_122', false ) ) {
+if ( ! class_exists( 'WPTelegram_Bot_API_Loader_1_2_2', false ) ) {
 	/**
 	 * Handles checking for and loading the newest version of WPTelegram_Bot_API
 	 *
@@ -30,7 +22,7 @@ if ( ! class_exists( 'WPTelegram_Bot_API_Loader_122', false ) ) {
 	 * @license   GPL-2.0+
 	 * @link      https://t.me/WPTelegram
 	 */
-	class WPTelegram_Bot_API_Loader_122 {
+	class WPTelegram_Bot_API_Loader_1_2_2 {
 
 		/**
 		 * Current version number
@@ -50,17 +42,17 @@ if ( ! class_exists( 'WPTelegram_Bot_API_Loader_122', false ) ) {
 		const PRIORITY = 9986;
 
 		/**
-		 * Single instance of the WPTelegram_Bot_API_Loader_122 object
+		 * Single instance of the WPTelegram_Bot_API_Loader_1_2_2 object
 		 *
-		 * @var WPTelegram_Bot_API_Loader_122
+		 * @var WPTelegram_Bot_API_Loader_1_2_2
 		 */
 		public static $single_instance = null;
 
 		/**
-		 * Creates/returns the single instance WPTelegram_Bot_API_Loader_122 object
+		 * Creates/returns the single instance WPTelegram_Bot_API_Loader_1_2_2 object
 		 *
 		 * @since  1.0.1
-		 * @return WPTelegram_Bot_API_Loader_122 Single instance object
+		 * @return WPTelegram_Bot_API_Loader_1_2_2 Single instance object
 		 */
 		public static function initiate() {
 			if ( null === self::$single_instance ) {
@@ -83,38 +75,40 @@ if ( ! class_exists( 'WPTelegram_Bot_API_Loader_122', false ) ) {
 			 * A constant you can use to check if WPTelegram_Bot_API is loaded
 			 * for your plugins/themes with WPTelegram_Bot_API dependency
 			 */
-			if ( ! defined( 'WPTELEGRAM_API_LOADED' ) ) {
-				define( 'WPTELEGRAM_API_LOADED', self::PRIORITY );
+			if ( ! defined( 'WPTELEGRAM_BOT_API_LOADED' ) ) {
+				define( 'WPTELEGRAM_BOT_API_LOADED', self::PRIORITY );
 			}
 
 			/**
 			 * Use after_setup_theme hook instead of init
 			 * to make the API library available during init
 			 */
-			add_action( 'after_setup_theme', array( $this, 'include_wptelegram_bot_api' ), self::PRIORITY );
+			add_action( 'after_setup_theme', array( $this, 'init_wptelegram_bot_api' ), self::PRIORITY );
 		}
 
 		/**
 		 * A final check if WPTelegram_Bot_API exists before kicking off our WPTelegram_Bot_API loading.
-		 * WPTELEGRAM_API_VERSION constant is set at this point.
+		 * WPTELEGRAM_BOT_API_VERSION constant is set at this point.
 		 *
 		 * @since  1.0.1
 		 */
-		public function include_wptelegram_bot_api() {
+		public function init_wptelegram_bot_api() {
 			if ( class_exists( 'WPTelegram_Bot_API', false ) ) {
 				return;
 			}
 
-			if ( ! defined( 'WPTELEGRAM_API_VERSION' ) ) {
-				define( 'WPTELEGRAM_API_VERSION', self::VERSION );
+			if ( ! defined( 'WPTELEGRAM_BOT_API_VERSION' ) ) {
+				define( 'WPTELEGRAM_BOT_API_VERSION', self::VERSION );
 			}
 
-			if ( ! defined( 'WPTELEGRAM_API_DIR' ) ) {
-				define( 'WPTELEGRAM_API_DIR', dirname( __FILE__ ) );
+			if ( ! defined( 'WPTELEGRAM_BOT_API_DIR' ) ) {
+				define( 'WPTELEGRAM_BOT_API_DIR', dirname( __FILE__ ) );
 			}
 
 			// Now kick off the class autoloader.
 			spl_autoload_register( array( __CLASS__, 'wptelegram_bot_api_autoload_classes' ) );
+
+			add_action( 'rest_api_init', array( $this, 'register_rest_routes' ) );
 		}
 
 		/**
@@ -127,12 +121,25 @@ if ( ! class_exists( 'WPTelegram_Bot_API_Loader_122', false ) ) {
 			if ( 0 !== strpos( $class_name, 'WPTelegram_Bot_API' ) ) {
 				return;
 			}
-			$path = WPTELEGRAM_API_DIR . '/classes';
 
-			$class_name = strtolower( $class_name );
+			$is_rest_class = 0 === strpos( $class_name, 'WPTelegram_Bot_API_REST' );
+
+			$path = WPTELEGRAM_BOT_API_DIR . ( $is_rest_class ? '/rest-api' : '/classes' );
+
+			$class_name = str_replace( '_', '-', strtolower( $class_name ) );
 
 			include_once "{$path}/class-{$class_name}.php";
 		}
+
+		/**
+		 * Register WP REST API routes.
+		 *
+		 * @since 1.2.2
+		 */
+		public function register_rest_routes() {
+			$controller = new WPTelegram_Bot_API_REST_Controller();
+			$controller->register_routes();
+		}
 	}
-	WPTelegram_Bot_API_Loader_122::initiate();
+	WPTelegram_Bot_API_Loader_1_2_2::initiate();
 }

@@ -24,6 +24,14 @@ if ( ! class_exists( 'WPTelegram_Bot_API' ) ) :
 	class WPTelegram_Bot_API {
 
 		/**
+		 * Regular expression to match Telegram bot token.
+		 *
+		 * @var string Regex.
+		 * @since 1.2.2
+		 */
+		const BOT_TOKEN_REGEX = '/\A\d{9,11}:[\w-]{35}\Z/';
+
+		/**
 		 * All the instances of the WPTelegram_Bot_API object
 		 *
 		 * @var WPTelegram_Bot_API
