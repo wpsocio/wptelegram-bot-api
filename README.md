@@ -9,7 +9,7 @@ require __DIR__ . '/wptelegram-bot-api/src/index.php'
 
 $bot_token  = 'YOUR BOT TOKEN HERE';
 
-$bot_api = new WPTelegram_Bot_API( $bot_token );
+$bot_api = new \WPTelegram\BotAPI\API( $bot_token );
 
 $bot_api->sendMessage([
     'chat_id' => 123456789,
@@ -24,12 +24,12 @@ $bot_api->sendPhoto
 
 **NOTES:**
 
-- Do not require conditionally, like `if ( class_exists() )`.
-- It's safe to include it directly.
-- Library takes care of its multiple versions being loaded.
-- It always loads the latest version.
+-   Do not require conditionally, like `if ( class_exists() )`.
+-   It's safe to include it directly.
+-   Library takes care of its multiple versions being loaded.
+-   It always loads the latest version.
 
 ## Requirements
 
-- `PHP >= 5.6`
-- `WP >= 4.7`
+-   `PHP >= 5.6`
+-   `WP >= 4.7`

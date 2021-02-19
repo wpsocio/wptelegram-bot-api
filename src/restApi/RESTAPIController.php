@@ -5,20 +5,26 @@
  * @link       https://t.me/manzoorwanijk
  * @since      1.2.2
  *
- * @package    WPTelegram_Bot_API
- * @subpackage WPTelegram_Bot_API/rest-api
+ * @package    WPTelegram\BotAPI
+ * @subpackage WPTelegram\BotAPI\restApi
  */
+
+namespace WPTelegram\BotAPI\restApi;
+
+use WP_REST_Request;
+use WP_REST_Response;
+use WPTelegram\BotAPI\API;
 
 /**
  * Class to handle the bot API endpoint.
  *
  * @since 1.2.2
  *
- * @package    WPTelegram_Bot_API
- * @subpackage WPTelegram_Bot_API/rest-api
+ * @package    WPTelegram\BotAPI
+ * @subpackage WPTelegram\BotAPI\restApi
  * @author     Manzoor Wani <@manzoorwanijk>
  */
-class WPTelegram_Bot_API_REST_Controller extends WPTelegram_Bot_API_REST_Base_Controller {
+class RESTAPIController extends RESTBaseController {
 
 	/**
 	 * Constructor
@@ -81,7 +87,7 @@ class WPTelegram_Bot_API_REST_Controller extends WPTelegram_Bot_API_REST_Base_Co
 		$body = array();
 		$code = 200;
 
-		$bot_api = new WPTelegram_Bot_API( $bot_token );
+		$bot_api = new API( $bot_token );
 
 		if ( empty( $api_params ) ) {
 			$api_params = array();
@@ -142,7 +148,7 @@ class WPTelegram_Bot_API_REST_Controller extends WPTelegram_Bot_API_REST_Base_Co
 	public static function validate_param( $value, WP_REST_Request $request, $key ) {
 		switch ( $key ) {
 			case 'bot_token':
-				$pattern = WPTelegram_Bot_API::BOT_TOKEN_REGEX;
+				$pattern = API::BOT_TOKEN_REGEX;
 				break;
 		}
 

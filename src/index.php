@@ -5,8 +5,8 @@
  * @link       https://t.me/manzoorwanijk
  * @since      1.0.0
  *
- * @package    WPTelegram_Bot_API
+ * @package    WPTelegram\BotAPI
  */
 
 // require the loader.
-require __DIR__ . '/class-wptelegram-bot-api-loader.php';
+require __DIR__ . '/Loader.php';

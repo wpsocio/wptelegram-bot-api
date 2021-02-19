@@ -1,27 +1,29 @@
-<?php // phpcs:ignore -- class name hyphens
+<?php
 /**
  * Request class.
  *
  * @link       https://t.me/manzoorwanijk
  * @since      1.0.0
  *
- * @package    WPTelegram_Bot_API
- * @subpackage WPTelegram_Bot_API/classes
+ * @package    WPTelegram\BotAPI
+ * @subpackage WPTelegram\BotAPI
  */
 
-if ( ! class_exists( 'WPTelegram_Bot_API_Request' ) ) :
+namespace WPTelegram\BotAPI;
+
+if ( ! class_exists( '\WPTelegram\BotAPI\Request', false ) ) :
 	/**
 	 * Request class.
 	 *
 	 * @since  1.0.1
 	 *
 	 * @category  WordPress_Plugin Addon
-	 * @package   WPTelegram_Bot_API
+	 * @package   WPTelegram\BotAPI
 	 * @author    WPTelegram team
 	 * @license   GPL-2.0+
 	 * @link      https://t.me/WPTelegram
 	 */
-	class WPTelegram_Bot_API_Request {
+	class Request {
 		/**
 		 * The API token.
 		 *
@@ -50,7 +52,7 @@ if ( ! class_exists( 'WPTelegram_Bot_API_Request' ) ) :
 		protected $params = array();
 
 		/**
-		 * Creates a new WPTelegram_Bot_API_Request
+		 * Creates a new Request
 		 *
 		 * @param string|null $bot_token The API token.
 		 * @param string|null $api_method The API method name.
@@ -69,7 +71,7 @@ if ( ! class_exists( 'WPTelegram_Bot_API_Request' ) ) :
 		 *
 		 * @param string $bot_token The API token.
 		 *
-		 * @return WPTelegram_Bot_API_Request
+		 * @return Request
 		 */
 		public function set_bot_token( $bot_token ) {
 			$this->bot_token = $bot_token;
@@ -95,7 +97,7 @@ if ( ! class_exists( 'WPTelegram_Bot_API_Request' ) ) :
 		 *
 		 * @param string $api_method The API method name.
 		 *
-		 * @return WPTelegram_Bot_API_Request
+		 * @return Request
 		 */
 		public function set_api_method( $api_method ) {
 			$this->api_method = $api_method;
@@ -120,7 +122,7 @@ if ( ! class_exists( 'WPTelegram_Bot_API_Request' ) ) :
 		 *
 		 * @param array $params The method params.
 		 *
-		 * @return WPTelegram_Bot_API_Request
+		 * @return Request
 		 */
 		public function set_params( array $params = array() ) {
 			$this->params = array_merge( $this->params, $params );

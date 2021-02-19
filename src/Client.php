@@ -1,27 +1,31 @@
-<?php // phpcs:ignore -- class name hyphens
+<?php
 /**
  * Client class.
  *
  * @link       https://t.me/manzoorwanijk
  * @since      1.0.0
  *
- * @package    WPTelegram_Bot_API
- * @subpackage WPTelegram_Bot_API/classes
+ * @package    WPTelegram\BotAPI
+ * @subpackage WPTelegram\BotAPI/classes
  */
 
-if ( ! class_exists( 'WPTelegram_Bot_API_Client' ) ) :
+namespace WPTelegram\BotAPI;
+
+use WP_Error;
+
+if ( ! class_exists( '\WPTelegram\BotAPI\Client', false ) ) :
 	/**
 	 * Client class.
 	 *
 	 * @since  1.0.1
 	 *
 	 * @category  WordPress_Plugin Addon
-	 * @package   WPTelegram_Bot_API
+	 * @package   WPTelegram\BotAPI
 	 * @author    WPTelegram team
 	 * @license   GPL-2.0+
 	 * @link      https://t.me/WPTelegram
 	 */
-	class WPTelegram_Bot_API_Client {
+	class Client {
 		/**
 		 * The API base URL.
 		 *
@@ -46,7 +50,7 @@ if ( ! class_exists( 'WPTelegram_Bot_API_Client' ) ) :
 		 *
 		 * @since  1.0.0
 		 *
-		 * @param WPTelegram_Bot_API_Request $request The request instance.
+		 * @param Request $request The request instance.
 		 *
 		 * @return array
 		 */
@@ -64,9 +68,9 @@ if ( ! class_exists( 'WPTelegram_Bot_API_Client' ) ) :
 		 *
 		 * @since  1.0.0
 		 *
-		 * @param WPTelegram_Bot_API_Request $request
+		 * @param Request $request
 		 *
-		 * @return WP_Error|WPTelegram_Bot_API_Response
+		 * @return WP_Error|Response
 		 */
 		// phpcs:ignore -- snake case
 		public function sendRequest( $request ) {
@@ -103,13 +107,13 @@ if ( ! class_exists( 'WPTelegram_Bot_API_Client' ) ) :
 		 *
 		 * @since  1.0.0
 		 *
-		 * @param WPTelegram_Bot_API_Request $request The request instance.
-		 * @param array                      $raw_response The response.
+		 * @param Request $request The request instance.
+		 * @param array   $raw_response The response.
 		 *
-		 * @return WPTelegram_Bot_API_Response
+		 * @return Response
 		 */
 		protected function get_response( $request, $raw_response ) {
-			return new WPTelegram_Bot_API_Response( $request, $raw_response );
+			return new Response( $request, $raw_response );
 		}
 	}
 endif;

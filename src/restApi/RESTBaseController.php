@@ -1,24 +1,26 @@
-<?php // phpcs:ignore -- class name hyphens
+<?php
 /**
  * WP REST API functionality of the plugin.
  *
  * @link       https://t.me/manzoorwanijk
  * @since      1.2.2
  *
- * @package    WPTelegram_Bot_API
- * @subpackage WPTelegram_Bot_API/rest-api
+ * @package    WPTelegram\BotAPI
+ * @subpackage WPTelegram\BotAPI\restApi
  */
+
+namespace WPTelegram\BotAPI\restApi;
 
 /**
  * Base class for all the endpoints.
  *
  * @since 1.2.2
  *
- * @package    WPTelegram_Bot_API
- * @subpackage WPTelegram_Bot_API/rest-api
+ * @package    WPTelegram\BotAPI
+ * @subpackage WPTelegram\BotAPI\restApi
  * @author     Manzoor Wani <@manzoorwanijk>
  */
-abstract class WPTelegram_Bot_API_REST_Base_Controller extends WP_REST_Controller {
+abstract class RESTBaseController extends \WP_REST_Controller {
 
 	/**
 	 * The namespace of this controller's route.

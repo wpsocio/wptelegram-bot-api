@@ -1,27 +1,31 @@
-<?php // phpcs:ignore -- class name hyphens
+<?php
 /**
  * Main class.
  *
  * @link       https://t.me/manzoorwanijk
  * @since      1.0.0
  *
- * @package    WPTelegram_Bot_API
- * @subpackage WPTelegram_Bot_API/classes
+ * @package    WPTelegram\BotAPI
+ * @subpackage WPTelegram\BotAPI
  */
 
-if ( ! class_exists( 'WPTelegram_Bot_API' ) ) :
+namespace WPTelegram\BotAPI;
+
+use WP_Error;
+
+if ( ! class_exists( '\WPTelegram\BotAPI\API', false ) ) :
 	/**
 	 * Main class.
 	 *
 	 * @since  1.0.1
 	 *
 	 * @category  WordPress_Plugin Addon
-	 * @package   WPTelegram_Bot_API
+	 * @package   WPTelegram\BotAPI
 	 * @author    WPTelegram team
 	 * @license   GPL-2.0+
 	 * @link      https://t.me/WPTelegram
 	 */
-	class WPTelegram_Bot_API {
+	class API {
 
 		/**
 		 * Regular expression to match Telegram bot token.
@@ -32,9 +36,9 @@ if ( ! class_exists( 'WPTelegram_Bot_API' ) ) :
 		const BOT_TOKEN_REGEX = '/\A\d{9,11}:[\w-]{35}\Z/';
 
 		/**
-		 * All the instances of the WPTelegram_Bot_API object
+		 * All the instances of the API object
 		 *
-		 * @var WPTelegram_Bot_API
+		 * @var API
 		 */
 		public static $instances;
 
@@ -48,37 +52,37 @@ if ( ! class_exists( 'WPTelegram_Bot_API' ) ) :
 		/**
 		 * The Telegram client
 		 *
-		 * @var WPTelegram_Bot_API_Client
+		 * @var Client
 		 */
 		protected $client;
 
 		/**
 		 * The original request
 		 *
-		 * @var WPTelegram_Bot_API_Request
+		 * @var Request
 		 */
 		protected $request;
 
 		/**
 		 * Stores the last request made to Telegram Bot API.
 		 *
-		 * @var WPTelegram_Bot_API_Response|null
+		 * @var Response|null
 		 */
 		protected $last_response;
 
 		/**
-		 * Instantiates a new WPTelegram_Bot_API object.
+		 * Instantiates a new WPTelegram\BotAPI object.
 		 *
 		 * @param string $bot_token   The Telegram Bot API Access Token.
 		 */
 		public function __construct( $bot_token = null ) {
 			$this->bot_token = $bot_token;
 
-			$this->client = new WPTelegram_Bot_API_Client();
+			$this->client = new Client();
 		}
 
 		/**
-		 * Creates/returns the single instance WPTelegram_Bot_API object for the specific plugin
+		 * Creates/returns the single instance API object for the specific plugin
 		 * to avoid multiple instances for that plugin.
 		 *
 		 * @since 1.0.0
@@ -86,7 +90,7 @@ if ( ! class_exists( 'WPTelegram_Bot_API' ) ) :
 		 * @param string $id   The ID of the instance, usually the plugin slug.
 		 * @param string $bot_token   The Telegram Bot API Access Token.
 		 *
-		 * @return WPTelegram_Bot_API_Loader_100 Single instance object
+		 * @return API Single instance object
 		 */
 		public static function get_instance( $id = '', $bot_token = null ) {
 			if ( ! isset( self::$instances[ $id ] ) ) {
@@ -133,7 +137,7 @@ if ( ! class_exists( 'WPTelegram_Bot_API' ) ) :
 		/**
 		 * Returns Telegram Bot API Client instance.
 		 *
-		 * @return WPTelegram_Bot_API_Client
+		 * @return Client
 		 */
 		public function get_client() {
 			return $this->client;
@@ -144,7 +148,7 @@ if ( ! class_exists( 'WPTelegram_Bot_API' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @return WPTelegram_Bot_API_Request
+		 * @return Request
 		 */
 		public function get_request() {
 			return $this->request;
@@ -153,7 +157,7 @@ if ( ! class_exists( 'WPTelegram_Bot_API' ) ) :
 		/**
 		 * Returns the last response returned from API request.
 		 *
-		 * @return WPTelegram_Bot_API_Response
+		 * @return Response
 		 */
 		public function get_last_response() {
 			return $this->last_response;
@@ -165,7 +169,7 @@ if ( ! class_exists( 'WPTelegram_Bot_API' ) ) :
 		 * @since  1.0.0
 		 *
 		 * @param array $params The message args.
-		 * @return WPTelegram_Bot_API_Response
+		 * @return Response
 		 */
 		//phpcs:ignore -- snake case
 		public function sendMessage( $params ) {
@@ -190,7 +194,7 @@ if ( ! class_exists( 'WPTelegram_Bot_API' ) ) :
 		 *
 		 * @param string $api_method The method name.
 		 * @param array  $params The message args.
-		 * @return WPTelegram_Bot_API_Response
+		 * @return Response
 		 */
 		//phpcs:ignore -- snake case
 		private function sendRequest( $api_method, $params ) {
@@ -226,7 +230,7 @@ if ( ! class_exists( 'WPTelegram_Bot_API' ) ) :
 		/**
 		 * Check if the response is successful
 		 *
-		 * @param WPTelegram_Bot_API_Response $res The API response.
+		 * @param Response $res The API response.
 		 * @return bool
 		 */
 		public function is_success( $res = null ) {
@@ -235,21 +239,21 @@ if ( ! class_exists( 'WPTelegram_Bot_API' ) ) :
 				$res = $this->last_response;
 			}
 
-			if ( ! is_wp_error( $res ) && $res instanceof WPTelegram_Bot_API_Response && 200 === $res->get_response_code() ) {
+			if ( ! is_wp_error( $res ) && $res instanceof Response && 200 === $res->get_response_code() ) {
 				return true;
 			}
 			return false;
 		}
 
 		/**
-		 * Instantiates a new WPTelegram_Bot_API_Request
+		 * Instantiates a new Request
 		 *
 		 * @param string $api_method The method name.
 		 * @param array  $params The message args.
-		 * @return WPTelegram_Bot_API_Request
+		 * @return Request
 		 */
 		private function request( $api_method, array $params = array() ) {
-			return new WPTelegram_Bot_API_Request(
+			return new Request(
 				$this->get_bot_token(),
 				$api_method,
 				$params

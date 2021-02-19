@@ -1,27 +1,29 @@
-<?php // phpcs:ignore -- class name hyphens
+<?php
 /**
  * Response class.
  *
  * @link       https://t.me/manzoorwanijk
  * @since      1.0.0
  *
- * @package    WPTelegram_Bot_API
- * @subpackage WPTelegram_Bot_API/classes
+ * @package    WPTelegram\BotAPI
+ * @subpackage WPTelegram\BotAPI/classes
  */
 
-if ( ! class_exists( 'WPTelegram_Bot_API_Response' ) ) :
+namespace WPTelegram\BotAPI;
+
+if ( ! class_exists( '\WPTelegram\BotAPI\Response', false ) ) :
 	/**
 	 * Response class.
 	 *
 	 * @since  1.0.1
 	 *
 	 * @category  WordPress_Plugin Addon
-	 * @package   WPTelegram_Bot_API
+	 * @package   WPTelegram\BotAPI
 	 * @author    WPTelegram team
 	 * @license   GPL-2.0+
 	 * @link      https://t.me/WPTelegram
 	 */
-	class WPTelegram_Bot_API_Response {
+	class Response {
 		/**
 		 * Whether the response is valid JSON.
 		 *
@@ -90,7 +92,7 @@ if ( ! class_exists( 'WPTelegram_Bot_API_Response' ) ) :
 		 *
 		 * @since  1.0.0
 		 *
-		 * @var WPTelegram_Bot_API_Request
+		 * @var Request
 		 */
 		protected $request;
 
@@ -108,8 +110,8 @@ if ( ! class_exists( 'WPTelegram_Bot_API_Response' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @param WPTelegram_Bot_API_Request $request The original request that returned this response.
-		 * @param array                      $raw_response The original response from wp_remote_post.
+		 * @param Request $request The original request that returned this response.
+		 * @param array   $raw_response The original response from wp_remote_post.
 		 */
 		public function __construct( $request, $raw_response ) {
 
@@ -147,7 +149,7 @@ if ( ! class_exists( 'WPTelegram_Bot_API_Response' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @return WPTelegram_Bot_API_Request
+		 * @return Request
 		 */
 		public function get_request() {
 			return $this->request;
