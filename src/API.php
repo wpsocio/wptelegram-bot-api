@@ -28,12 +28,20 @@ if ( ! class_exists( '\WPTelegram\BotAPI\API', false ) ) :
 	class API {
 
 		/**
+		 * Pattern to match Telegram bot token.
+		 *
+		 * @var string Pattern.
+		 * @since x.y.x
+		 */
+		const BOT_TOKEN_PATTERN = '\A(?:[0-9]{9,11}:[\w-]{35})?\Z';
+
+		/**
 		 * Regular expression to match Telegram bot token.
 		 *
 		 * @var string Regex.
 		 * @since 1.2.2
 		 */
-		const BOT_TOKEN_REGEX = '/\A\d{9,11}:[\w-]{35}\Z/';
+		const BOT_TOKEN_REGEX = '/' . self::BOT_TOKEN_PATTERN . '/i';
 
 		/**
 		 * All the instances of the API object
