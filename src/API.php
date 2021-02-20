@@ -31,9 +31,9 @@ if ( ! class_exists( '\WPTelegram\BotAPI\API', false ) ) :
 		 * Pattern to match Telegram bot token.
 		 *
 		 * @var string Pattern.
-		 * @since x.y.x
+		 * @since 1.2.3
 		 */
-		const BOT_TOKEN_PATTERN = '\A(?:[0-9]{9,11}:[\w-]{35})?\Z';
+		const BOT_TOKEN_PATTERN = '[0-9]{9,11}:[\w-]{35}';
 
 		/**
 		 * Regular expression to match Telegram bot token.
@@ -41,7 +41,7 @@ if ( ! class_exists( '\WPTelegram\BotAPI\API', false ) ) :
 		 * @var string Regex.
 		 * @since 1.2.2
 		 */
-		const BOT_TOKEN_REGEX = '/' . self::BOT_TOKEN_PATTERN . '/i';
+		const BOT_TOKEN_REGEX = '/\A' . self::BOT_TOKEN_PATTERN . '\Z/i';
 
 		/**
 		 * All the instances of the API object
