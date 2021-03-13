@@ -11,7 +11,7 @@
 
 namespace WPTelegram\BotAPI;
 
-if ( ! class_exists( '\WPTelegram\BotAPI\Response', false ) ) :
+if ( ! class_exists( __NAMESPACE__ . '\Response', false ) ) :
 	/**
 	 * Response class.
 	 *

@@ -13,7 +13,7 @@ namespace WPTelegram\BotAPI;
 
 use WP_Error;
 
-if ( ! class_exists( '\WPTelegram\BotAPI\API', false ) ) :
+if ( ! class_exists( __NAMESPACE__ . '\API', false ) ) :
 	/**
 	 * Main class.
 	 *
@@ -165,7 +165,7 @@ if ( ! class_exists( '\WPTelegram\BotAPI\API', false ) ) :
 		/**
 		 * Returns the last response returned from API request.
 		 *
-		 * @return Response
+		 * @return Response|WP_Error
 		 */
 		public function get_last_response() {
 			return $this->last_response;

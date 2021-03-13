@@ -13,7 +13,7 @@ namespace WPTelegram\BotAPI;
 
 use WP_Error;
 
-if ( ! class_exists( '\WPTelegram\BotAPI\Client', false ) ) :
+if ( ! class_exists( __NAMESPACE__ . '\Client', false ) ) :
 	/**
 	 * Client class.
 	 *

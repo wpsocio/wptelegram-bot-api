@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die;
 }
 
-if ( ! class_exists( '\WPTelegram\BotAPI\Loader_1_2_3', false ) ) {
+if ( ! class_exists( __NAMESPACE__ . '\Loader_1_2_3', false ) ) {
 	/**
 	 * Handles checking for and loading the newest version of WPTelegram\BotAPI
 	 *
@@ -106,7 +106,7 @@ if ( ! class_exists( '\WPTelegram\BotAPI\Loader_1_2_3', false ) ) {
 		 * @since  1.0.1
 		 */
 		public function init_wptelegram_bot_api() {
-			if ( class_exists( '\WPTelegram\BotAPI\API', false ) ) {
+			if ( class_exists( BotAPI\API::class, false ) ) {
 				return;
 			}
 
