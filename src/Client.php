@@ -6,7 +6,7 @@
  * @since      1.0.0
  *
  * @package    WPTelegram\BotAPI
- * @subpackage WPTelegram\BotAPI/classes
+ * @subpackage WPTelegram\BotAPI
  */
 
 namespace WPTelegram\BotAPI;
@@ -57,10 +57,10 @@ if ( ! class_exists( __NAMESPACE__ . '\Client', false ) ) :
 		public function prepare_request( $request ) {
 			$url = $this->get_base_url() . $request->get_bot_token() . '/' . $request->get_api_method();
 
-			return array(
+			return [
 				$url,
 				$request->get_params(),
-			);
+			];
 		}
 
 		/**
@@ -76,13 +76,13 @@ if ( ! class_exists( __NAMESPACE__ . '\Client', false ) ) :
 		public function sendRequest( $request ) {
 			list( $url, $params ) = $this->prepare_request( $request );
 
-			$args = array(
+			$args = [
 				'timeout'   => 20, // seconds.
 				'blocking'  => true,
-				'headers'   => array( 'wptelegram_bot' => true ),
+				'headers'   => [ 'wptelegram_bot' => true ],
 				'body'      => $params,
 				'sslverify' => true,
-			);
+			];
 
 			foreach ( $args as $argument => $value ) {
 				$args[ $argument ] = apply_filters( "wptelegram_bot_api_request_arg_{$argument}", $value, $request );

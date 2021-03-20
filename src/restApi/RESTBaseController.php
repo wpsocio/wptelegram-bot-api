@@ -25,15 +25,15 @@ abstract class RESTBaseController extends \WP_REST_Controller {
 	/**
 	 * The namespace of this controller's route.
 	 *
-	 * @since 1.2.2
 	 * @var string
+	 * @since x.y.z
 	 */
-	protected $namespace = 'wptelegram-bot/v1';
+	const NAMESPACE = 'wptelegram-bot/v1';
 
 	/**
 	 * The base of this controller's route.
 	 *
 	 * @var string
 	 */
-	protected $rest_base;
+	const REST_BASE = '';
 }

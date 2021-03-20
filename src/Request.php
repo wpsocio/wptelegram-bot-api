@@ -49,7 +49,7 @@ if ( ! class_exists( __NAMESPACE__ . '\Request', false ) ) :
 		 *
 		 * @var array The parameters to send with this request.
 		 */
-		protected $params = array();
+		protected $params = [];
 
 		/**
 		 * Creates a new Request
@@ -58,7 +58,7 @@ if ( ! class_exists( __NAMESPACE__ . '\Request', false ) ) :
 		 * @param string|null $api_method The API method name.
 		 * @param array|null  $params The method params.
 		 */
-		public function __construct( $bot_token = null, $api_method = null, array $params = array() ) {
+		public function __construct( $bot_token = null, $api_method = null, array $params = [] ) {
 			$this->set_bot_token( $bot_token );
 			$this->set_api_method( $api_method );
 			$this->set_params( $params );
@@ -124,7 +124,7 @@ if ( ! class_exists( __NAMESPACE__ . '\Request', false ) ) :
 		 *
 		 * @return Request
 		 */
-		public function set_params( array $params = array() ) {
+		public function set_params( array $params = [] ) {
 			$this->params = array_merge( $this->params, $params );
 
 			return $this;

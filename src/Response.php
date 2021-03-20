@@ -6,7 +6,7 @@
  * @since      1.0.0
  *
  * @package    WPTelegram\BotAPI
- * @subpackage WPTelegram\BotAPI/classes
+ * @subpackage WPTelegram\BotAPI
  */
 
 namespace WPTelegram\BotAPI;
@@ -76,7 +76,7 @@ if ( ! class_exists( __NAMESPACE__ . '\Response', false ) ) :
 		 *
 		 * @var array
 		 */
-		protected $decoded_body = array();
+		protected $decoded_body = [];
 
 		/**
 		 * API Endpoint used to make the request.
@@ -133,12 +133,12 @@ if ( ! class_exists( __NAMESPACE__ . '\Response', false ) ) :
 		 * @return void
 		 */
 		public function set_properties( $raw_response ) {
-			$properties = array(
+			$properties = [
 				'response_code',
 				'response_message',
 				'body',
 				'headers',
-			);
+			];
 			foreach ( $properties as $property ) {
 				$this->$property = call_user_func( 'wp_remote_retrieve_' . $property, $raw_response );
 			}

@@ -96,7 +96,7 @@ if ( ! class_exists( __NAMESPACE__ . '\Loader_1_2_3', false ) ) {
 			 * Use after_setup_theme hook instead of init
 			 * to make the API library available during init
 			 */
-			add_action( 'after_setup_theme', array( $this, 'init_wptelegram_bot_api' ), self::PRIORITY );
+			add_action( 'after_setup_theme', [ $this, 'init_wptelegram_bot_api' ], self::PRIORITY );
 		}
 
 		/**
@@ -119,9 +119,9 @@ if ( ! class_exists( __NAMESPACE__ . '\Loader_1_2_3', false ) ) {
 			}
 
 			// Now kick off the class autoloader.
-			spl_autoload_register( array( __CLASS__, 'wptelegram_bot_api_autoload_classes' ) );
+			spl_autoload_register( [ __CLASS__, 'wptelegram_bot_api_autoload_classes' ] );
 
-			add_action( 'rest_api_init', array( $this, 'register_rest_routes' ) );
+			add_action( 'rest_api_init', [ $this, 'register_rest_routes' ] );
 		}
 
 		/**

@@ -27,13 +27,11 @@ use WPTelegram\BotAPI\API;
 class RESTAPIController extends RESTBaseController {
 
 	/**
-	 * Constructor
+	 * The base of this controller's route.
 	 *
-	 * @since 1.2.2
+	 * @var string
 	 */
-	public function __construct() {
-		$this->rest_base = '/(?P<method>[a-zA-Z]+)';
-	}
+	const REST_BASE = '/(?P<method>[a-zA-Z]+)';
 
 	/**
 	 * Register the routes.
@@ -43,16 +41,16 @@ class RESTAPIController extends RESTBaseController {
 	public function register_routes() {
 
 		register_rest_route(
-			$this->namespace,
-			$this->rest_base,
-			array(
-				array(
+			self::NAMESPACE,
+			self::REST_BASE,
+			[
+				[
 					'methods'             => 'GET, POST',
-					'callback'            => array( $this, 'handle_request' ),
-					'permission_callback' => array( $this, 'permissions_for_request' ),
+					'callback'            => [ $this, 'handle_request' ],
+					'permission_callback' => [ $this, 'permissions_for_request' ],
 					'args'                => self::get_test_params(),
-				),
-			)
+				],
+			]
 		);
 	}
 
@@ -84,24 +82,24 @@ class RESTAPIController extends RESTBaseController {
 		$api_method = $request->get_param( 'method' );
 		$api_params = $request->get_param( 'api_params' );
 
-		$body = array();
+		$body = [];
 		$code = 200;
 
 		$bot_api = new API( $bot_token );
 
 		if ( empty( $api_params ) ) {
-			$api_params = array();
+			$api_params = [];
 		}
 
-		$res = call_user_func( array( $bot_api, $api_method ), $api_params );
+		$res = call_user_func( [ $bot_api, $api_method ], $api_params );
 
 		if ( is_wp_error( $res ) ) {
 
-			$body = array(
+			$body = [
 				'ok'          => false,
 				'error_code'  => 500,
 				'description' => $res->get_error_code() . ' - ' . $res->get_error_message(),
-			);
+			];
 			$code = $body['error_code'];
 
 		} else {
@@ -121,19 +119,19 @@ class RESTAPIController extends RESTBaseController {
 	 * @return array Query parameters for the settings.
 	 */
 	public static function get_test_params() {
-		return array(
-			'bot_token'  => array(
+		return [
+			'bot_token'  => [
 				'type'              => 'string',
 				'required'          => true,
 				'sanitize_callback' => 'sanitize_text_field',
-				'validate_callback' => array( __CLASS__, 'validate_param' ),
-			),
-			'api_params' => array(
+				'validate_callback' => [ __CLASS__, 'validate_param' ],
+			],
+			'api_params' => [
 				'type'              => 'object',
-				'sanitize_callback' => array( __CLASS__, 'sanitize_param' ),
+				'sanitize_callback' => [ __CLASS__, 'sanitize_param' ],
 				'validate_callback' => 'rest_validate_request_arg',
-			),
-		);
+			],
+		];
 	}
 
 	/**
