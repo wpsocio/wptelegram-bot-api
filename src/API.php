@@ -260,7 +260,7 @@ if ( ! class_exists( __NAMESPACE__ . '\API', false ) ) :
 		 * @param array  $params The message args.
 		 * @return Request
 		 */
-		private function request( $api_method, array $params = array() ) {
+		private function request( $api_method, array $params = [] ) {
 			return new Request(
 				$this->get_bot_token(),
 				$api_method,

@@ -26,7 +26,7 @@ abstract class RESTBaseController extends \WP_REST_Controller {
 	 * The namespace of this controller's route.
 	 *
 	 * @var string
-	 * @since x.y.z
+	 * @since 1.2.2
 	 */
 	const NAMESPACE = 'wptelegram-bot/v1';
 
