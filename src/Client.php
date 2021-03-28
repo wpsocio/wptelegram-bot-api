@@ -2,7 +2,7 @@
 /**
  * Client class.
  *
- * @link       https://t.me/manzoorwanijk
+ * @link       https://manzoorwani.dev
  * @since      1.0.0
  *
  * @package    WPTelegram\BotAPI

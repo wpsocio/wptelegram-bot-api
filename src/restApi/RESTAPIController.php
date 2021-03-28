@@ -2,7 +2,7 @@
 /**
  * Plugin bot API endpoint for WordPress REST API.
  *
- * @link       https://t.me/manzoorwanijk
+ * @link       https://manzoorwani.dev
  * @since      1.2.2
  *
  * @package    WPTelegram\BotAPI
