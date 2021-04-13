@@ -128,7 +128,7 @@ class RESTAPIController extends RESTBaseController {
 			],
 			'api_params' => [
 				'type'              => 'object',
-				'sanitize_callback' => [ __CLASS__, 'sanitize_param' ],
+				'sanitize_callback' => [ __CLASS__, 'sanitize_params' ],
 				'validate_callback' => 'rest_validate_request_arg',
 			],
 		];
@@ -158,17 +158,33 @@ class RESTAPIController extends RESTBaseController {
 	 *
 	 * @since 1.2.2
 	 *
+	 * @param mixed           $value   Value of the param.
+	 * @param WP_REST_Request $request WP REST API request.
+	 * @param string          $key     Param key.
+	 */
+	public static function sanitize_params( $value, WP_REST_Request $request, $key ) {
+		$safe_value = self::sanitize_input( $value );
+
+		return apply_filters( 'wptelegram_bot_api_rest_sanitize_params', $safe_value, $value, $request, $key );
+	}
+
+	/**
+	 * Sanitize params.
+	 *
+	 * @since 1.2.4
+	 *
 	 * @param mixed $input Value of the param.
 	 */
-	public static function sanitize_param( $input ) {
+	public static function sanitize_input( $input ) {
+		$raw_input = $input;
 		if ( is_array( $input ) ) {
 			foreach ( $input as $key => $value ) {
-				$input[ sanitize_text_field( $key ) ] = self::sanitize_param( $value );
+				$input[ sanitize_text_field( $key ) ] = self::sanitize_input( $value );
 			}
 		} else {
 			$input = sanitize_text_field( $input );
 		}
 
-		return $input;
+		return apply_filters( 'wptelegram_bot_api_rest_sanitize_input', $input, $raw_input );
 	}
 }

@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die;
 }
 
-if ( ! class_exists( __NAMESPACE__ . '\Loader_1_2_3', false ) ) {
+if ( ! class_exists( __NAMESPACE__ . '\Loader_1_2_4', false ) ) {
 	/**
 	 * Handles checking for and loading the newest version of WPTelegram\BotAPI
 	 *
@@ -35,7 +35,7 @@ if ( ! class_exists( __NAMESPACE__ . '\Loader_1_2_3', false ) ) {
 	 * @license   GPL-2.0+
 	 * @link      https://t.me/WPTelegram
 	 */
-	class Loader_1_2_3 {
+	class Loader_1_2_4 {
 
 		/**
 		 * Current version number
@@ -43,7 +43,7 @@ if ( ! class_exists( __NAMESPACE__ . '\Loader_1_2_3', false ) ) {
 		 * @var   string
 		 * @since 1.0.1
 		 */
-		const VERSION = '1.2.3';
+		const VERSION = '1.2.4';
 
 		/**
 		 * Current version hook priority.
@@ -52,20 +52,20 @@ if ( ! class_exists( __NAMESPACE__ . '\Loader_1_2_3', false ) ) {
 		 * @var   int
 		 * @since 1.0.1
 		 */
-		const PRIORITY = 9984;
+		const PRIORITY = 9983;
 
 		/**
-		 * Single instance of the Loader_1_2_3 object
+		 * Single instance of the Loader_1_2_4 object
 		 *
-		 * @var Loader_1_2_3
+		 * @var Loader_1_2_4
 		 */
 		public static $single_instance = null;
 
 		/**
-		 * Creates/returns the single instance Loader_1_2_3 object
+		 * Creates/returns the single instance Loader_1_2_4 object
 		 *
 		 * @since  1.0.1
-		 * @return Loader_1_2_3 Single instance object
+		 * @return Loader_1_2_4 Single instance object
 		 */
 		public static function initiate() {
 			if ( null === self::$single_instance ) {
@@ -155,5 +155,5 @@ if ( ! class_exists( __NAMESPACE__ . '\Loader_1_2_3', false ) ) {
 			$controller->register_routes();
 		}
 	}
-	Loader_1_2_3::initiate();
+	Loader_1_2_4::initiate();
 }
