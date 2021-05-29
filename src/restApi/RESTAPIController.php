@@ -105,7 +105,8 @@ class RESTAPIController extends RESTBaseController {
 		} else {
 
 			$body = $res->get_decoded_body();
-			$code = $res->get_response_code();
+			// When using proxy, error_code may be in body.
+			$code = ! empty( $body['error_code'] ) ? $body['error_code'] : $res->get_response_code();
 		}
 
 		return new WP_REST_Response( $body, $code );
