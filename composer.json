@@ -1,6 +1,6 @@
 {
   "name": "wptelegram/bot-api",
-  "version": "1.2.2",
+  "version": "1.2.5",
   "description": "Telegram Bot API library for WordPress.",
   "require-dev": {
     "dealerdirect/phpcodesniffer-composer-installer": "*",
