@@ -262,7 +262,9 @@ if ( ! class_exists( __NAMESPACE__ . '\Response', false ) ) :
 		 * @return mixed
 		 */
 		public function get_result() {
-			return $this->decoded_body['result'];
+			$body = $this->get_decoded_body();
+
+			return isset( $body['result'] ) ? $body['result'] : null;
 		}
 
 		/**
