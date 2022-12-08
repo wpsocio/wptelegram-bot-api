@@ -57,10 +57,14 @@ if ( ! class_exists( __NAMESPACE__ . '\Client', false ) ) :
 		public function prepare_request( $request ) {
 			$url = $this->get_base_url() . $request->get_bot_token() . '/' . $request->get_api_method();
 
-			return [
-				$url,
-				$request->get_params(),
-			];
+			return apply_filters(
+				'wptelegram_bot_api_prepare_request',
+				[
+					$url,
+					$request->get_params(),
+				],
+				$request
+			);
 		}
 
 		/**
