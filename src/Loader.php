@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die;
 }
 
-if ( ! class_exists( __NAMESPACE__ . '\Loader_1_2_6', false ) ) {
+if ( ! class_exists( __NAMESPACE__ . '\Loader_1_2_7', false ) ) {
 	/**
 	 * Handles checking for and loading the newest version of WPTelegram\BotAPI
 	 *
@@ -35,7 +35,7 @@ if ( ! class_exists( __NAMESPACE__ . '\Loader_1_2_6', false ) ) {
 	 * @license   GPL-2.0+
 	 * @link      https://t.me/WPTelegram
 	 */
-	class Loader_1_2_6 {
+	class Loader_1_2_7 {
 
 		/**
 		 * Current version number
@@ -43,7 +43,7 @@ if ( ! class_exists( __NAMESPACE__ . '\Loader_1_2_6', false ) ) {
 		 * @var   string
 		 * @since 1.0.1
 		 */
-		const VERSION = '1.2.6';
+		const VERSION = '1.2.7';
 
 		/**
 		 * Current version hook priority.
@@ -52,20 +52,20 @@ if ( ! class_exists( __NAMESPACE__ . '\Loader_1_2_6', false ) ) {
 		 * @var   int
 		 * @since 1.0.1
 		 */
-		const PRIORITY = 9981;
+		const PRIORITY = 9980;
 
 		/**
-		 * Single instance of the Loader_1_2_6 object
+		 * Single instance of the Loader_1_2_7 object
 		 *
-		 * @var Loader_1_2_6
+		 * @var Loader_1_2_7
 		 */
 		public static $single_instance = null;
 
 		/**
-		 * Creates/returns the single instance Loader_1_2_6 object
+		 * Creates/returns the single instance Loader_1_2_7 object
 		 *
 		 * @since  1.0.1
-		 * @return Loader_1_2_6 Single instance object
+		 * @return Loader_1_2_7 Single instance object
 		 */
 		public static function initiate() {
 			if ( null === self::$single_instance ) {
@@ -121,7 +121,7 @@ if ( ! class_exists( __NAMESPACE__ . '\Loader_1_2_6', false ) ) {
 			// Now kick off the class autoloader.
 			spl_autoload_register( [ __CLASS__, 'wptelegram_bot_api_autoload_classes' ] );
 
-			add_action( 'rest_api_init', [ $this, 'register_rest_routes' ] );
+			add_action( 'rest_api_init', [ restApi\RESTAPIController::class, 'init' ] );
 		}
 
 		/**
@@ -144,16 +144,6 @@ if ( ! class_exists( __NAMESPACE__ . '\Loader_1_2_6', false ) ) {
 
 			include_once $path;
 		}
-
-		/**
-		 * Register WP REST API routes.
-		 *
-		 * @since 1.2.2
-		 */
-		public function register_rest_routes() {
-			$controller = new restApi\RESTAPIController();
-			$controller->register_routes();
-		}
 	}
-	Loader_1_2_6::initiate();
+	Loader_1_2_7::initiate();
 }

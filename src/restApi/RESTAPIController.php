@@ -34,6 +34,16 @@ class RESTAPIController extends RESTBaseController {
 	const REST_BASE = '/(?P<method>[a-zA-Z]+)';
 
 	/**
+	 * Initialize the REST routes.
+	 *
+	 * @return void
+	 */
+	public static function init() {
+		$controller = new self();
+		$controller->register_routes();
+	}
+
+	/**
 	 * Register the routes.
 	 *
 	 * @since 1.2.2
