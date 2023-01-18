@@ -2,7 +2,7 @@
 /**
  * WP REST API functionality of the plugin.
  *
- * @link       https://manzoorwani.dev
+ * @link       https://wpsocio.com
  * @since      1.2.2
  *
  * @package    WPTelegram\BotAPI
@@ -18,7 +18,7 @@ namespace WPTelegram\BotAPI\restApi;
  *
  * @package    WPTelegram\BotAPI
  * @subpackage WPTelegram\BotAPI\restApi
- * @author     Manzoor Wani <@manzoorwanijk>
+ * @author     WPTelegram team
  */
 abstract class RESTBaseController extends \WP_REST_Controller {
 

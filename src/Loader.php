@@ -4,7 +4,7 @@
  *
  * The class which loads the latest version of the library.
  *
- * @link       https://manzoorwani.dev
+ * @link       https://wpsocio.com
  * @since      1.2.2
  *
  * @package    WPTelegram\BotAPI
