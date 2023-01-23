@@ -5,7 +5,10 @@ Telegram Bot API library for WordPress.
 ## Usage
 
 ```php
-require __DIR__ . '/wptelegram-bot-api/src/index.php'
+require_once __DIR__ . '/autoload-static.php';
+
+// Or this for usage in WordPress
+require_once __DIR__ . '/autoload-wp.php';
 
 $bot_token  = 'YOUR BOT TOKEN HERE';
 
@@ -24,12 +27,12 @@ $bot_api->sendPhoto
 
 **NOTES:**
 
--   Do not require conditionally, like `if ( class_exists() )`.
--   It's safe to include it directly.
--   Library takes care of its multiple versions being loaded.
--   It always loads the latest version.
+- Do not require conditionally, like `if ( class_exists() )`.
+- It's safe to include it directly.
+- Library takes care of its multiple versions being loaded.
+- It always loads the latest version.
 
 ## Requirements
 
--   `PHP >= 5.6`
--   `WP >= 4.7`
+- `PHP >= 5.6`
+- `WP >= 4.7`
