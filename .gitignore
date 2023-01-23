@@ -30,5 +30,5 @@ Thumbs.db
 /logs
 
 # Composer
-/vendor/
+vendor/
 contributors.md

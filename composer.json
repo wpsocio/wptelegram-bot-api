@@ -1,24 +1,27 @@
 {
-  "name": "wptelegram/bot-api",
-  "version": "1.2.7",
-  "description": "Telegram Bot API library for WordPress.",
-  "require-dev": {
-    "dealerdirect/phpcodesniffer-composer-installer": "*",
-    "object-calisthenics/phpcs-calisthenics-rules": "*",
-    "phpcompatibility/php-compatibility": "*",
-    "wp-coding-standards/wpcs": "*",
-    "wp-cli/wp-cli-bundle": "*"
-  },
-  "scripts": {
-    "post-install-cmd": [
-      "composer run set-config"
-    ],
-    "set-config": [
-      "\"vendor/bin/phpcs\" --config-set installed_paths ../../../vendor/wp-coding-standards/wpcs",
-      "\"vendor/bin/phpcs\" --config-set default_standard WordPress"
-    ],
-    "lint": "\"vendor/bin/phpcs\" src/",
-    "lint:skip-warnings": "\"vendor/bin/phpcs\" -n",
-    "lint:fix": "\"vendor/bin/phpcbf\" --standard=phpcs.xml src/"
-  }
+	"name": "wptelegram/bot-api",
+	"version": "1.2.7",
+	"description": "Telegram Bot API library for WordPress.",
+	"require-dev": {
+		"dealerdirect/phpcodesniffer-composer-installer": "*",
+		"phpcompatibility/php-compatibility": "*",
+		"wp-coding-standards/wpcs": "*"
+	},
+	"autoload": {
+		"psr-4": {
+			"WPTelegram\\BotAPI\\": "src/"
+		}
+	},
+	"scripts": {
+		"post-install-cmd": [
+			"composer run set-config"
+		],
+		"set-config": [
+			"\"vendor/bin/phpcs\" --config-set installed_paths ../../../vendor/wp-coding-standards/wpcs",
+			"\"vendor/bin/phpcs\" --config-set default_standard WordPress"
+		],
+		"lint": "\"vendor/bin/phpcs\" --standard=phpcs.xml .",
+		"lint:skip-warnings": "\"vendor/bin/phpcs\" --standard=phpcs.xml -n .",
+		"lint:fix": "\"vendor/bin/phpcbf\" --standard=phpcs.xml ."
+	}
 }
