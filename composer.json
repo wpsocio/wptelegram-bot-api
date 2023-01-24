@@ -3,8 +3,6 @@
 	"version": "1.2.7",
 	"description": "Telegram Bot API library for WordPress.",
 	"require-dev": {
-		"dealerdirect/phpcodesniffer-composer-installer": "*",
-		"phpcompatibility/php-compatibility": "*",
 		"wp-coding-standards/wpcs": "*"
 	},
 	"autoload": {
