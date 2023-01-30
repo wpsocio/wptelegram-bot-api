@@ -107,6 +107,8 @@ if ( ! class_exists( __NAMESPACE__ . '\WPLoader_1_2_7', false ) ) {
 		 * WPTELEGRAM_BOT_API_VERSION constant is set at this point.
 		 *
 		 * @since  1.2.7
+		 *
+		 * @return void
 		 */
 		public function init() {
 			if ( defined( 'WPTELEGRAM_BOT_API_LOADED' ) ) {
@@ -137,8 +139,10 @@ if ( ! class_exists( __NAMESPACE__ . '\WPLoader_1_2_7', false ) ) {
 		 *
 		 * @since  1.2.7
 		 * @param  string $class_name Name of the class being requested.
+		 *
+		 * @return void
 		 */
-		public static function autoload_classes( $class_name ) {
+		public static function autoload_classes( string $class_name ) {
 			$namespace = 'WPTelegram\BotAPI';
 
 			if ( 0 !== strpos( $class_name, $namespace ) ) {
