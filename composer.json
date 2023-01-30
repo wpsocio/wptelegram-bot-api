@@ -1,9 +1,11 @@
 {
 	"name": "wptelegram/bot-api",
+	"type": "wordpress-plugin",
 	"description": "Telegram Bot API library for WordPress.",
 	"require-dev": {
 		"wp-coding-standards/wpcs": "^2.3",
-		"squizlabs/php_codesniffer": "^3.7"
+		"squizlabs/php_codesniffer": "^3.7",
+		"z4kn4fein/php-semver": "^2.0"
 	},
 	"autoload": {
 		"psr-4": {
@@ -14,6 +16,10 @@
 		"lint": "\"vendor/bin/phpcs\" --standard=phpcs.xml .",
 		"lint:fix": "\"vendor/bin/phpcbf\" --standard=phpcs.xml .",
 		"lint:skip-warnings": "\"vendor/bin/phpcs\" --standard=phpcs.xml -n .",
-		"test": "\"vendor/bin/phpunit\" tests/"
+		"test": "\"vendor/bin/phpunit\" tests/",
+		"release:major": "composer run-script release -- --type=major",
+		"release:minor": "composer run-script release -- --type=minor",
+		"release:patch": "composer run-script release -- --type=patch",
+		"release": "@php bin/release.php"
 	}
 }
