@@ -94,7 +94,7 @@ if ( ! class_exists( __NAMESPACE__ . '\WPLoader_1_3_0', false ) ) {
 		 *
 		 * @since 1.2.7
 		 */
-		private function __construct() {
+		private function __construct( ) {
 			/**
 			 * Use after_setup_theme hook instead of init
 			 * to make the library available during init
