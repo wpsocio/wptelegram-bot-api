@@ -1,9 +1,12 @@
 {
 	"name": "wptelegram/bot-api",
-	"version": "1.2.7",
+	"type": "wordpress-plugin",
+	"license": "GPL-3.0-or-later",
 	"description": "Telegram Bot API library for WordPress.",
 	"require-dev": {
-		"wp-coding-standards/wpcs": "*"
+		"wp-coding-standards/wpcs": "^2.3",
+		"squizlabs/php_codesniffer": "^3.7",
+		"z4kn4fein/php-semver": "^2.0"
 	},
 	"autoload": {
 		"psr-4": {
@@ -11,15 +14,13 @@
 		}
 	},
 	"scripts": {
-		"post-install-cmd": [
-			"composer run set-config"
-		],
-		"set-config": [
-			"\"vendor/bin/phpcs\" --config-set installed_paths ../../../vendor/wp-coding-standards/wpcs",
-			"\"vendor/bin/phpcs\" --config-set default_standard WordPress"
-		],
 		"lint": "\"vendor/bin/phpcs\" --standard=phpcs.xml .",
+		"lint:fix": "\"vendor/bin/phpcbf\" --standard=phpcs.xml .",
 		"lint:skip-warnings": "\"vendor/bin/phpcs\" --standard=phpcs.xml -n .",
-		"lint:fix": "\"vendor/bin/phpcbf\" --standard=phpcs.xml ."
+		"test": "\"vendor/bin/phpunit\" tests/",
+		"release:major": "composer run-script release -- --type=major",
+		"release:minor": "composer run-script release -- --type=minor",
+		"release:patch": "composer run-script release -- --type=patch",
+		"release": "@php bin/release.php"
 	}
 }

@@ -10,11 +10,13 @@
 	<!-- Exclude the Composer Vendor directory. -->
 	<exclude-pattern>/vendor/*</exclude-pattern>
 
+	<config name="installed_paths" value="vendor/wp-coding-standards/wpcs" />
+
 	<!-- Load WordPress Coding standards -->
-	<rule ref="WordPress" />
+	<rule ref="WordPress-Extra" />
 
 	<!-- Customize -->
-	<rule ref="WordPress">
+	<rule ref="WordPress-Extra">
 		<!-- Disable File Name warning -->
 		<exclude name="WordPress.Files.FileName" />
 
@@ -29,6 +31,9 @@
 
 		<!-- Disable alternative functions -->
 		<exclude name="WordPress.WP.AlternativeFunctions" />
+
+		<!-- Disable escaping output -->
+		<exclude name="WordPress.Security.EscapeOutput" />
 	</rule>
 
 	<!-- Disallow Long Array Syntax -->
