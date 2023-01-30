@@ -4,6 +4,10 @@ Telegram Bot API library for WordPress.
 
 ## Usage
 
+```bash
+composer require wptelegram/bot-api
+```
+
 ```php
 require_once __DIR__ . '/autoload-wp.php';
 
