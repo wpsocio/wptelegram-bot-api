@@ -182,8 +182,9 @@ if ( ! class_exists( __NAMESPACE__ . '\API', false ) ) :
 		 * @return Response
 		 */
 		public function sendMessage( array $params ) {
-
-			if ( mb_strlen( $params['text'], 'UTF-8' ) > 4096 ) {
+			// If text is longer than 4096 characters, split it into multiple messages.
+			// We will do it only if parse_mode is not set, otherwise splitting may break the formatting.
+			if ( empty( $params['parse_mode'] ) && mb_strlen( $params['text'], 'UTF-8' ) > 4096 ) {
 				// break text after every 4096th character and preserve words.
 				preg_match_all( '/.{1,4095}(?:\s|$)/su', $params['text'], $matches );
 				foreach ( $matches[0] as $text ) {
