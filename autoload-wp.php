@@ -29,7 +29,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die;
 }
 
-if ( ! class_exists( __NAMESPACE__ . '\WPLoader_1_3_0', false ) ) {
+if ( ! class_exists( __NAMESPACE__ . '\WPLoader_1_3_1', false ) ) {
 	/**
 	 * Handles checking for and loading the newest version of the library
 	 *
@@ -46,7 +46,7 @@ if ( ! class_exists( __NAMESPACE__ . '\WPLoader_1_3_0', false ) ) {
 	 * @license   GPL-3.0+
 	 * @link      https://t.me/WPTelegram
 	 */
-	class WPLoader_1_3_0 {
+	class WPLoader_1_3_1 {
 
 		/**
 		 * Current version number
@@ -54,7 +54,7 @@ if ( ! class_exists( __NAMESPACE__ . '\WPLoader_1_3_0', false ) ) {
 		 * @var   string
 		 * @since 1.2.7
 		 */
-		const VERSION = '1.3.0';
+		const VERSION = '1.3.1';
 
 		/**
 		 * Current version hook priority.
@@ -63,20 +63,20 @@ if ( ! class_exists( __NAMESPACE__ . '\WPLoader_1_3_0', false ) ) {
 		 * @var   int
 		 * @since 1.2.7
 		 */
-		const PRIORITY = 9977;
+		const PRIORITY = 9976;
 
 		/**
-		 * Single instance of the WPLoader_1_3_0 object
+		 * Single instance of the WPLoader_1_3_1 object
 		 *
-		 * @var WPLoader_1_3_0
+		 * @var WPLoader_1_3_1
 		 */
 		private static $instance = null;
 
 		/**
-		 * Creates/returns the single instance WPLoader_1_3_0 object
+		 * Creates/returns the single instance WPLoader_1_3_1 object
 		 *
 		 * @since  1.2.7
-		 * @return WPLoader_1_3_0 Single instance object
+		 * @return WPLoader_1_3_1 Single instance object
 		 */
 		public static function initiate() {
 			if ( null === self::$instance ) {
@@ -157,5 +157,5 @@ if ( ! class_exists( __NAMESPACE__ . '\WPLoader_1_3_0', false ) ) {
 			include_once $path;
 		}
 	}
-	WPLoader_1_3_0::initiate();
+	WPLoader_1_3_1::initiate();
 }
