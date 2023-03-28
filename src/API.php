@@ -33,7 +33,7 @@ if ( ! class_exists( __NAMESPACE__ . '\API', false ) ) :
 		 * @var string Pattern.
 		 * @since 1.2.3
 		 */
-		const BOT_TOKEN_PATTERN = '[0-9]{9,11}:[\w-]{35}';
+		const BOT_TOKEN_PATTERN = '[0-9]{9,11}:[a-zA-Z0-9_-]{35}';
 
 		/**
 		 * Regular expression to match Telegram bot token.
