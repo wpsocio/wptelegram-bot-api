@@ -125,7 +125,7 @@ if ( ! class_exists( __NAMESPACE__ . '\WPLoader_1_3_3', false ) ) {
 			}
 
 			if ( ! defined( 'WPTELEGRAM_BOT_API_DIR' ) ) {
-				define( 'WPTELEGRAM_BOT_API_DIR', dirname( __FILE__ ) );
+				define( 'WPTELEGRAM_BOT_API_DIR', __DIR__ );
 			}
 
 			// Now kick off the class autoloader.

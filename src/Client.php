@@ -80,9 +80,9 @@ if ( ! class_exists( __NAMESPACE__ . '\Client', false ) ) :
 			list( $url, $params ) = $this->prepare_request( $request );
 
 			$args = [
-				'timeout'   => 20, // seconds.
-				'headers'   => [ 'wptelegram_bot' => true ],
-				'body'      => $params,
+				'timeout' => 20, // seconds.
+				'headers' => [ 'wptelegram_bot' => true ],
+				'body'    => $params,
 			];
 
 			foreach ( $args as $argument => $value ) {
