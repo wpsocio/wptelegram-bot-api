@@ -7,10 +7,11 @@
 	<!-- Add source codes in the report -->
 	<arg value="s" />
 
-	<!-- Exclude the Composer Vendor directory. -->
-	<exclude-pattern>/vendor/*</exclude-pattern>
+	<config name="installed_paths" value="../../phpcsstandards/phpcsextra,../../phpcsstandards/phpcsutils,../../wp-coding-standards/wpcs"/>
 
-	<config name="installed_paths" value="vendor/wp-coding-standards/wpcs" />
+	<file>.</file>
+    <exclude-pattern>/.git/</exclude-pattern>
+	<exclude-pattern>*/vendor/*</exclude-pattern>
 
 	<!-- Load WordPress Coding standards -->
 	<rule ref="WordPress-Extra" />
@@ -21,7 +22,7 @@
 		<exclude name="WordPress.Files.FileName" />
 
 		<!-- Disable short array syntax warning -->
-		<exclude name="Generic.Arrays.DisallowShortArraySyntax" />
+		<exclude name="Universal.Arrays.DisallowShortArraySyntax.Found" />
 
 		<!-- Disable snake case rule for variable names -->
 		<exclude name="WordPress.NamingConventions.ValidVariableName" />
@@ -46,5 +47,8 @@
 		<properties>
 			<property name="skipIfInheritdoc" value="true" />
 		</properties>
+
+		<!-- Disable TypeHintMissing -->
+		<exclude name="Squiz.Commenting.FunctionComment.TypeHintMissing" />
 	</rule>
 </ruleset>

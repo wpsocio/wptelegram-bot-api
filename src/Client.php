@@ -80,11 +80,9 @@ if ( ! class_exists( __NAMESPACE__ . '\Client', false ) ) :
 			list( $url, $params ) = $this->prepare_request( $request );
 
 			$args = [
-				'timeout'   => 20, // seconds.
-				'blocking'  => true,
-				'headers'   => [ 'wptelegram_bot' => true ],
-				'body'      => $params,
-				'sslverify' => true,
+				'timeout' => 20, // seconds.
+				'headers' => [ 'wptelegram_bot' => true ],
+				'body'    => $params,
 			];
 
 			foreach ( $args as $argument => $value ) {
@@ -95,8 +93,10 @@ if ( ! class_exists( __NAMESPACE__ . '\Client', false ) ) :
 
 			$args = apply_filters( 'wptelegram_bot_api_remote_post_args', $args, $request );
 
+			$remote_request = empty( $params ) ? 'wp_remote_get' : 'wp_remote_post';
+
 			// send the request.
-			$raw_response = wp_remote_post( $url, $args );
+			$raw_response = $remote_request( $url, $args );
 
 			if ( ! is_wp_error( $raw_response ) ) {
 				return $this->get_response( $request, $raw_response );
